@@ -15,3 +15,13 @@ const connectDB = async () => {
 }
 
 module.exports = connectDB
+
+
+/**
+ * brew tap mongodb/brew
+ * brew install mongosh
+ * 
+ * brew tap mongodb/brew
+ * brew install mongodb-community@6.0
+ * brew services start mongodb-community@6.0
+ */
