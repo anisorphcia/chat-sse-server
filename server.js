@@ -37,6 +37,14 @@ app.get('/api/chat/stream', (req, res) => {
   })
 })
 
+// 心跳机制
+// 每 15 秒向所有客户端发送一个空消息，保持连接活跃
+setInterval(() => {
+  clients.forEach(client => {
+    client.res.write(':\n\n') // SSE 心跳格式
+  })
+}, 15000)
+
 // 接收用户输入的接口
 app.post('/api/chat/message', async (req, res) => {
   const { message, userId, timestamp } = req.body
