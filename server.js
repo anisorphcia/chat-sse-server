@@ -32,6 +32,8 @@ app.get('/api/chat/stream', (req, res) => {
   }
   clients.push(newClient)
 
+  // client 断开连接时，移除该客户端 （客户端关闭网页，刷新页面，网络异常断开
+  // 避免内存泄漏
   req.on('close', () => {
     clients = clients.filter(client => client.id !== clientId)
   })
